@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 #include "Datapoint.h"
 #include "ParetoAlgo.h"
 #include "StablesortAlgo.h"

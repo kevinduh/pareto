@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <functional>
+#include <stdlib.h>
 
 class Datapoint{
 
