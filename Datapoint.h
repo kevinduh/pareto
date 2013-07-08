@@ -20,14 +20,19 @@ class Datapoint{
   void setParetoStatus(int status) {paretoStatus=status;};
   size_t dim() const {return vec.size();};
   void incrementDominated() {dominatedCount++;};
+  void decrementDominated() {dominatedCount--;};
   size_t numDominated() const {return dominatedCount;};
   void print() const;
+  void addToDominatingSet(size_t id2) {dominatingSet.push_back(id2);}; 
+  std::vector<size_t>::const_iterator beginDominatingSet() const {return dominatingSet.begin();};
+  std::vector<size_t>::const_iterator endDominatingSet() const {return dominatingSet.end();};
 
  private:
   size_t id; // datapoint id (0..N-1)
   int paretoStatus; // pareto status. -1=don't know, 1=pareto, 0=not pareto
   size_t dominatedCount; // number of datapoints that dominates this point
   std::vector<float> vec; // the K-dim vector
+  std::vector<size_t> dominatingSet; // set of vectors this one is dominating
 
 };
 

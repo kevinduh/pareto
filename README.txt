@@ -10,13 +10,19 @@ Compile:
 
 
 Usage:
->> ./pareto -l file1 -s file2 ... -l fileK 
+>> ./pareto (-a algorithmName) -l file1 -s file2 ... -l fileK 
 
    This computes the pareto frontier given N K-dimensional datapoints. 
    There are K>1 files, each consisting of a column of N numbers. 
    The flag -l indicates larger number is better (maximize); 
    alternatively, the -s flag means smaller is better (minimize). 
    The output consists of N labels, where 1=pareto and 0=not. 
+
+   Flag -a specifies the algorithm to use.
+     Supported algorithms:
+     -a bruteforce (default for K>2)
+     -a stablesort (default for K=2)
+     -a nondominatedsort (generates ranking, with higher number meaning higher level of pareto front)
 
 
 Example:

@@ -10,14 +10,22 @@
 #include "ParetoAlgo.h"
 #include "StablesortAlgo.h"
 #include "BruteforceAlgo.h"
+#include "NondominatedsortAlgo.h"
 
 void usage(){
-  std::cerr << "[usage] pareto -l file1 -l file2 ... -l fileK \n \
+  std::cerr << "[usage] pareto (-a algorithmName) -l file1 -l file2 ... -l fileK \n \
   Computes pareto frontier given N K-dimensional datapoints. \n \
   There are K>1 files, each consisting of a column of N numbers. \n \
   The flag -l indicates larger number is better (maximize); \n \
   alternatively, the -s flag means smaller is better (minimize). \n \
-  The output consists of N labels, where 1=pareto and 0=not. " << std::endl;
+  The output consists of N labels, where 1=pareto and 0=not. \n\n \
+  Flag -a specifies the algorithm to use. \n \
+  Supported algorithms: \n \
+    -a bruteforce (default for K>2) \n \
+    -a stablesort (default for K=2) \n \
+    -a nondominatedsort (generates ranking, with higher number meaning higher level of pareto front)\n \
+  " << std::endl;
+
   exit(1);
 }
 
@@ -114,6 +122,9 @@ int main(int argc, char* argv[]){
   }
   else if (algoName == "bruteforce") {
     algo = new BruteforceAlgo();
+  }
+  else if (algoName == "nondominatedsort"){
+    algo = new NondominatedsortAlgo();
   }
   else {
     std::cout << "[error] Unknown AlgoName: " << algoName << std::endl;
